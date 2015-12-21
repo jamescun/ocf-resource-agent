@@ -1,0 +1,49 @@
+#!/bin/bash
+# stub for crm_attribute for testing
+
+if [[ "$1" != "--type" ]]; then
+	echo "no type flag"
+	exit 1
+fi
+
+if [[ "$2" != "crm_config" ]]; then
+	echo "type should be crm_config"
+	exit 1
+fi
+
+if [[ "$3" != "--name" ]]; then
+	echo "no name flag"
+	exit 1
+fi
+
+if [[ -z "$4" ]]; then
+	echo "name should be set"
+	exit 1
+fi
+
+if [[ "$5" != "--set-name" ]]; then
+	echo "no set-name flag"
+	exit 1
+fi
+
+if [[ -z "$6" ]]; then
+	echo "set-name should be set"
+	exit 1
+fi
+
+if [[ "$7" == "--query" ]]; then
+	if [[ "$8" != "-q" ]]; then
+		echo "no quiet flag"
+		exit 1
+	fi
+
+	echo "example.org"
+elif [[ "$7" == "--update" ]]; then
+	if [[ -z "$8" ]]; then
+		echo "no update value"
+		exit 1
+	fi
+else
+	echo "no query or update operation"
+	exit 1
+fi
