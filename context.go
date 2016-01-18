@@ -1,6 +1,7 @@
 package ocf
 
 import (
+	"strconv"
 	"strings"
 )
 
@@ -29,4 +30,16 @@ func (c *Context) String(name string) string {
 // return key as array of strings
 func (c *Context) StringArray(name string) []string {
 	return strings.Fields(c.Keys[name])
+}
+
+// return int from key string (0 if invalid)
+func (c *Context) Int(name string) int {
+	v, _ := strconv.Atoi(c.String(name))
+	return v
+}
+
+// return int64 from key string (0 if invalid)
+func (c *Context) Int64(name string) int64 {
+	v, _ := strconv.ParseInt(c.String(name), 10, 64)
+	return v
 }
