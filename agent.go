@@ -28,6 +28,7 @@ func (a *Agent) run(command string, ctx *Context) error {
 		return a.r.Monitor(ctx)
 
 	case "notify":
+		ctx.readNotifyType()
 		return a.r.Notify(ctx)
 
 	case "promote":
