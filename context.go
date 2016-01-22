@@ -19,7 +19,7 @@ type Context struct {
 }
 
 func (c *Context) readNotifyType() {
-	c.Notify = strings.Join([]string{c.Keys["meta_notify_type"], c.Keys["meta_notify_operation"]}, "-")
+	c.Notify = strings.Join([]string{c.Keys["CRM_meta_notify_type"], c.Keys["CRM_meta_notify_operation"]}, "-")
 }
 
 // return key string

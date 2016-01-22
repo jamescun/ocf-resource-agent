@@ -6,11 +6,11 @@ import (
 
 var testContext = &Context{
 	Keys: map[string]string{
-		"meta_notify_type":         "pre",
-		"meta_notify_operation":    "promote",
-		"meta_notify_start_uname":  "example",
-		"meta_notify_master_uname": "foo bar",
-		"agent_internal_timeout":   "3600",
+		"CRM_meta_notify_type":         "pre",
+		"CRM_meta_notify_operation":    "promote",
+		"CRM_meta_notify_start_uname":  "example",
+		"CRM_meta_notify_master_uname": "foo bar",
+		"agent_internal_timeout":       "3600",
 	},
 }
 
@@ -28,7 +28,7 @@ func BenchmarkReadNotifyType(b *testing.B) {
 }
 
 func TestContextString(t *testing.T) {
-	if s := testContext.String("meta_notify_start_uname"); s != "example" {
+	if s := testContext.String("CRM_meta_notify_start_uname"); s != "example" {
 		t.Fatalf("expected 'example', got '%s'", s)
 	} else if s := testContext.String("foo"); s != "" {
 		t.Fatalf("expected empty string, got '%s'", s)
@@ -37,12 +37,12 @@ func TestContextString(t *testing.T) {
 
 func BenchmarkContextString(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		testContext.String("meta_notify_start_uname")
+		testContext.String("CRM_meta_notify_start_uname")
 	}
 }
 
 func TestContextStringArray(t *testing.T) {
-	a := testContext.StringArray("meta_notify_master_uname")
+	a := testContext.StringArray("CRM_meta_notify_master_uname")
 	if len(a) != 2 {
 		t.Fatal("expected 2 strings, got", len(a))
 	} else if a[0] != "foo" {
@@ -54,7 +54,7 @@ func TestContextStringArray(t *testing.T) {
 
 func BenchmarkContextStringArray(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		testContext.StringArray("meta_notify_master_uname")
+		testContext.StringArray("CRM_meta_notify_master_uname")
 	}
 }
 
